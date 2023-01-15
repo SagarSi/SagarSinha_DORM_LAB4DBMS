@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 drop database if exists student;\
+create database student;\
+use student;\
+create table  supplier( supp_id int ,supp_name varchar(50) not null,supp_city varchar(50) not null,supp_phone varchar(50) not null);\
+create table customer(cus_id int ,cus_name varchar(20) not null,cus_phone varchar(10) not null ,cus_city varchar(50), cus_gender char);\
+create table category(cat_id int,cat_name varchar(20) not null);\
+create table product(pro_id int, pro_namen varchar(20) not null default 'dummy',pro_desc varchar(60),cat_id int );\
+create table supplier_pricing(pricing_id int, pro_id int, supp_id int , supp_price int);\
+create table orders(ord_id int, ord_amount int, ord_date date not null, cus_id int , pricing_id int);\
+create table rating( rat_id int , ord_id int , rat_ratstars int not null);\
+insert into supplier values( 1,'rajeshretails' , 'delhi', 1234567890);\
+insert into supplier values( 2,'appaio ltd' , 'mumbai',2589631470);\
+insert into supplier values( 3,'knome products' , 'banglore', 9785462315);\
+insert into supplier values( 4,'bansal retails' , 'kochi', 8975463285);\
+insert into supplier values( 5,'mitcitytal ltd' , 'lucknow', 7898456532);\
+insert into customer values(1, 'aakash' , 9999999999,'delhi',"m");\
+insert into customer values(2, 'aman' , 9785463215,'noida',"m");\
+insert into customer values(3, 'neha' , 9999999999,'mumbai',"f");\
+insert into customer values(4, 'megha' , 9994562399,'kolkata',"f");\
+insert into customer values(5, 'pulkit' , 7895999999,'lucknow',"m");\
+insert into category values(1,'books');\
+insert into category values(2,'games');\
+insert into category values(3,'groceries');\
+insert into category values(4,'electronics');\
+insert into category values(5,'clothes');\
+insert into product values(1,'gta v','windows 7 and above with i5 processor and 8gb ram',2);\
+insert into product values(2,'tshirt','size-l with black,blueand white variations',5);\
+\
+insert into product values(3,'rog laptop','windows 10 with 15inch screen ,i7 processor,1tb ssd',4);\
+insert into product values(4,'oats','highly nutritious from nestle',3);\
+insert into product values(5,'harry potter','best collection of all time by j.k rowling',1);\
+insert into product values(6,'milk','1l tonned milk',3);\
+insert into product values(7,'boat earphones','1.5meter long dolby atoms',4);\
+insert into product values(8,'jeans','stretchable denim jeans with various sizes and colour',5);\
+insert into product values(9,'project igi', 'compatible with windows 7 and above',2);\
+insert into product values(10,'hoodie','black guccifor 13 yrs and above ',5);\
+insert into product values(11,'rich dad poor dad','written by robert kiyosaki',1);\
+insert into product values(12,'train your brain','by shireen stephen',1);\
+insert into supplier_pricing values(1,1,2,1500);\
+insert into supplier_pricing values(2,3,5,30000);\
+insert into supplier_pricing values(3,5,1,3000);\
+insert into supplier_pricing values(4,2,3,2500);\
+insert into supplier_pricing values(5,4,1,1000);\
+insert into supplier_pricing values(6,12,2,780);\
+insert into supplier_pricing values(7,12,4,789);\
+insert into supplier_pricing values(8,3,1,31000);\
+\
+insert into supplier_pricing values(9,1,5,1450);\
+insert into supplier_pricing values(10,4,2,999);\
+insert into supplier_pricing values(11,7,3,549);\
+insert into supplier_pricing values(12,7,4,529);\
+insert into supplier_pricing values(13,6,2,105);\
+insert into supplier_pricing values(14,6,1,99);\
+insert into supplier_pricing values(15,2,5,2999);\
+insert into supplier_pricing values(16,5,2,2999);\
+insert into orders values(101,1500,'2021-10-06',2,1);\
+insert into orders values(102,1000,'2021-10-12',3,5);\
+insert into orders values(103,30000,'2021-09-16',5,2);\
+insert into orders values(104,1500,'2021-10-05',1,1);\
+insert into orders values(105,3000,'2021-08-16',4,3);\
+insert into orders values(106,1450,'2021-08-18',1,9);\
+insert into orders values(107,789,'2021-09-01',3,7);\
+insert into orders values(108,780,'2021-09-07',5,6);\
+insert into orders values(109,3000,'2021-00-10',5,3);\
+insert into orders values(110,2500,'2021-09-10',2,4);\
+insert into orders values(111,1000,'2021-09-15',4,5);\
+insert into orders values(112,789,'2021-09-16',4,7);\
+insert into orders values(113,31000,'2021-09-16',1,8);\
+insert into orders values(114,1000,'2021-09-16',3,5);\
+insert into orders values(115,3000,'2021-09-16',5,3);\
+\
+insert into orders values(116,99,'2021-09-17',2,14);\
+\
+3. Select COUNT(CUS_NAME) from customer, orders ON customer.cus_id = order.cus_id where order.ord_amount>=3000 GROUP BY customer.gender}
